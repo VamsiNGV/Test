@@ -19,13 +19,13 @@ jobs:
 
   trigger-smoke-tests:
     needs: ci_pipeline
-    # secrets: inherit
-    # uses: VamsiNGV/cypress/.github/workflows/smoke-test.yml@main
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Smoke Tests
+    secrets: inherit
+    uses: VamsiNGV/cypress/.github/workflows/smoke-test.yml@main
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Trigger Smoke Tests
         
-        with:
-          workflow: "smoke-test.yml"
-          repo: "VamsiNGV/cypress"
-          token: ${{ secrets.GH_PAT }}
+        # with:
+        #   workflow: "smoke-test.yml"
+        #   repo: "VamsiNGV/cypress"
+        #   token: ${{ secrets.GH_PAT }}
