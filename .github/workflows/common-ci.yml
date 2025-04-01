@@ -19,8 +19,19 @@ jobs:
 
   trigger-smoke-tests:
     needs: ci_pipeline
-    secrets: inherit
-    uses: VamsiNGV/cypress/.github/workflows/smoke-test.yml@main
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Repository Dispatch Event
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/VamsiNGV/cypress/dispatches \
+          -d '{"event_type":"trigger-smoke-tests"}'
+    
+    # secrets: inherit
+    # uses: VamsiNGV/cypress/.github/workflows/smoke-test.yml@main
+    
     # runs-on: ubuntu-latest
     # steps:
     #   - name: Trigger Smoke Tests
